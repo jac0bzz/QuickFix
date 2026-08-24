@@ -1,8 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-
-  /* =========================================
-     1. MENÚ MÓVIL Y HEADER
-     ========================================= */
+  
   const menuBtn = document.querySelector('.menu');
   const navLinks = document.querySelector('.nav nav');
   const navHeader = document.querySelector('.nav');
@@ -27,9 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* =========================================
-     2. DIAGNÓSTICO (SÍNTOMAS)
-     ========================================= */
   const symptomButtons = document.querySelectorAll('.symptoms button');
   const answerText = document.querySelector('.answer-text');
   const answerCta = document.querySelector('.answer-cta');
@@ -54,9 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* =========================================
-     3. PREGUNTAS FRECUENTES (FAQ ACORDEÓN)
-     ========================================= */
   const faqItems = document.querySelectorAll('.faq-item');
 
   faqItems.forEach(item => {
@@ -71,9 +62,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* =========================================
-     4. SLIDER ANTES Y DESPUÉS (TOUCH/MOUSE FIX)
-     ========================================= */
   const slider = document.querySelector('.slider');
   const beforeWrapper = document.querySelector('.image-before-wrapper');
   const sliderLine = document.querySelector('.slider-line');
@@ -95,59 +83,45 @@ document.addEventListener('DOMContentLoaded', () => {
     updateSlider(slider.value || 50);
   }
 
-});
-
-// Ocultar Preloader suavemente al cargar todo el sitio
   const preloader = document.getElementById('preloader');
   if (preloader) {
-    window.addEventListener('load', () => {
-      preloader.classList.add('loaded');
-    });
+    const hidePreloader = () => preloader.classList.add('loaded');
     
-    // Fallback por si las imágenes se demoran mucho en cargar
-    setTimeout(() => {
-      preloader.classList.add('loaded');
-    }, 2000);
+    if (document.readyState === 'complete') {
+      hidePreloader();
+    } else {
+      window.addEventListener('load', hidePreloader);
+    }
+    
+    setTimeout(hidePreloader, 2000);
   }
 
-  /* =========================================
-     5. PROTECCIÓN DE CÓDIGO E IMÁGENES (BLOQUEO)
-     ========================================= */
-
-  // 1. Deshabilitar clic derecho
   document.addEventListener('contextmenu', (e) => {
     e.preventDefault();
   });
 
-  // 2. Prevenir arrastrar imágenes
   document.querySelectorAll('img').forEach(img => {
     img.addEventListener('dragstart', (e) => e.preventDefault());
   });
 
-  // 3. Bloquear atajos de teclado comunes (F12, DevTools, Inspeccionar, Ver Código)
   document.addEventListener('keydown', (e) => {
-    // Tecla F12
     if (e.key === 'F12') {
       e.preventDefault();
     }
     
-    // Ctrl+Shift+I / Ctrl+Shift+J / Ctrl+Shift+C (DevTools e Inspeccionar)
     if (e.ctrlKey && e.shiftKey && ['I', 'J', 'C', 'i', 'j', 'c'].includes(e.key)) {
       e.preventDefault();
     }
 
-    // Ctrl+U (Ver código fuente)
     if (e.ctrlKey && (e.key === 'u' || e.key === 'U')) {
       e.preventDefault();
     }
 
-    // Ctrl+S (Guardar página)
     if (e.ctrlKey && (e.key === 's' || e.key === 'S')) {
       e.preventDefault();
     }
   });
 
-  // 4. Trampa Anti-DevTools (Pausa la ejecución si abren la consola)
   setInterval(() => {
     const startTime = performance.now();
     debugger;
@@ -156,3 +130,24 @@ document.addEventListener('DOMContentLoaded', () => {
       window.location.reload();
     }
   }, 1000);
+
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.15 
+  };
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+        observer.unobserve(entry.target); 
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.reveal').forEach(element => {
+    observer.observe(element);
+  });
+
+});
