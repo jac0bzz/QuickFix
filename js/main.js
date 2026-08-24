@@ -109,3 +109,50 @@ document.addEventListener('DOMContentLoaded', () => {
       preloader.classList.add('loaded');
     }, 2000);
   }
+
+  /* =========================================
+     5. PROTECCIÓN DE CÓDIGO E IMÁGENES (BLOQUEO)
+     ========================================= */
+
+  // 1. Deshabilitar clic derecho
+  document.addEventListener('contextmenu', (e) => {
+    e.preventDefault();
+  });
+
+  // 2. Prevenir arrastrar imágenes
+  document.querySelectorAll('img').forEach(img => {
+    img.addEventListener('dragstart', (e) => e.preventDefault());
+  });
+
+  // 3. Bloquear atajos de teclado comunes (F12, DevTools, Inspeccionar, Ver Código)
+  document.addEventListener('keydown', (e) => {
+    // Tecla F12
+    if (e.key === 'F12') {
+      e.preventDefault();
+    }
+    
+    // Ctrl+Shift+I / Ctrl+Shift+J / Ctrl+Shift+C (DevTools e Inspeccionar)
+    if (e.ctrlKey && e.shiftKey && ['I', 'J', 'C', 'i', 'j', 'c'].includes(e.key)) {
+      e.preventDefault();
+    }
+
+    // Ctrl+U (Ver código fuente)
+    if (e.ctrlKey && (e.key === 'u' || e.key === 'U')) {
+      e.preventDefault();
+    }
+
+    // Ctrl+S (Guardar página)
+    if (e.ctrlKey && (e.key === 's' || e.key === 'S')) {
+      e.preventDefault();
+    }
+  });
+
+  // 4. Trampa Anti-DevTools (Pausa la ejecución si abren la consola)
+  setInterval(() => {
+    const startTime = performance.now();
+    debugger;
+    const endTime = performance.now();
+    if (endTime - startTime > 100) {
+      window.location.reload();
+    }
+  }, 1000);

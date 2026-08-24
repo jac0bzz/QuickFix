@@ -1175,3 +1175,95 @@ footer {
   50% { left: 0%; }
   100% { left: 100%; }
 }
+
+/* =========================================
+   BOTÓN FLOTANTE DE WHATSAPP
+   ========================================= */
+.whatsapp-float {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 60px;
+  height: 60px;
+  background: #25d366;
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+  z-index: 99;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-decoration: none;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 12px 30px rgba(37, 211, 102, 0.6);
+  color: #ffffff;
+}
+
+/* EFECTO PULSO */
+.whatsapp-float::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: rgba(37, 211, 102, 0.5);
+  z-index: -1;
+  animation: waPulse 2s infinite;
+}
+
+@keyframes waPulse {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  70% { transform: scale(1.4); opacity: 0; }
+  100% { transform: scale(0.95); opacity: 0; }
+}
+
+/* TOOLTIP DESKTOP */
+.float-tooltip {
+  position: absolute;
+  right: 72px;
+  background: #101a2b;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 8px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: translateX(10px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.whatsapp-float:hover .float-tooltip {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* AJUSTE PARA MÓVILES */
+@media (max-width: 768px) {
+  .whatsapp-float {
+    bottom: 20px;
+    right: 20px;
+    width: 55px;
+    height: 55px;
+    font-size: 28px;
+  }
+  .float-tooltip {
+    display: none; /* Oculta el tooltip en cel para que no estorbe */
+  }
+}
+
+::selection {
+  background: var(--blue, #0139FB);
+  color: #ffffff;
+}
+
+::-moz-selection {
+  background: var(--blue, #0139FB);
+  color: #ffffff;
+}
