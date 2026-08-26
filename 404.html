@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Página no encontrada (404) | QuickFix Plomeros 24/7 </title>
+    <meta name="robots" content="noindex, follow">
+    <meta name="theme-color" content="#0139FB">
+    
+    <link rel="icon" type="image/x-icon" href="static/Logo.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+        :root {
+            --blue: #0139FB;
+            --ink: #101a2b;
+            --muted: #667085;
+            --paper: #f7f9fc;
+            --line: #dfe5ee;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: var(--paper);
+            color: var(--ink);
+            font-family: 'DM Sans', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow-x: hidden;
+            user-select: none;
+        }
+
+        ::selection {
+            background: var(--blue);
+            color: #ffffff;
+        }
+
+        /* HEADER MODERNO */
+        header {
+            height: 70px;
+            width: 90vw;
+            max-width: 1100px;
+            margin: 20px auto 0;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 1);
+            border-radius: 100px;
+            box-shadow: 0 10px 40px rgba(16, 26, 43, 0.08);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .brand-mark {
+            height: 40px;
+            width: 120px;
+            display: grid;
+            place-items: center;
+        }
+
+        .brand-mark img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* CONTENIDO 404 */
+        .error-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .error-card {
+            background: var(--white);
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            padding: 50px 40px;
+            max-width: 620px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(16, 26, 43, 0.06);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .error-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(1, 57, 251, 0.08);
+            color: var(--blue);
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 12px;
+            padding: 6px 16px;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 20px;
+        }
+
+        .error-icon-wrapper {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 25px;
+            background: #edf2f7;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .error-icon-wrapper i {
+            font-size: 42px;
+            color: var(--blue);
+            animation: rotateWrench 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes rotateWrench {
+            0% { transform: rotate(-15deg); }
+            100% { transform: rotate(25deg); }
+        }
+
+        .error-code {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(60px, 10vw, 90px);
+            font-weight: 700;
+            line-height: 1;
+            color: var(--ink);
+            margin: 0 0 10px;
+            letter-spacing: -0.05em;
+        }
+
+        .error-code span {
+            color: var(--blue);
+        }
+
+        .error-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(22px, 4vw, 30px);
+            font-weight: 700;
+            margin: 0 0 15px;
+            line-height: 1.2;
+        }
+
+        .error-desc {
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.6;
+            margin: 0 auto 32px;
+            max-width: 440px;
+        }
+
+        .error-actions {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 26px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 14px;
+            text-decoration: none;
+            transition: all 0.25s ease;
+        }
+
+        .btn-primary {
+            background: var(--blue);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: #004fe6;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            border: 1px solid var(--line);
+            color: var(--ink);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--ink);
+            background: rgba(16, 26, 43, 0.03);
+            transform: translateY(-2px);
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 12px;
+            color: var(--muted);
+            border-top: 1px solid var(--line);
+            background: var(--white);
+        }
+
+        footer a {
+            color: var(--ink);
+            font-weight: 700;
+            text-decoration: underline;
+        }
+
+        /* WHATSAPP FLOTANTE */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 60px;
+            height: 60px;
+            background: #25d366;
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+            z-index: 99;
+            transition: transform 0.3s ease;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 480px) {
+            .error-card {
+            padding: 35px 20px;
+            }
+
+            .btn {
+            width: 100%;
+            }
+
+            .whatsapp-float {
+            bottom: 20px;
+            right: 20px;
+            width: 55px;
+            height: 55px;
+            font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a class="brand" href="index.html">
+            <span class="brand-mark">
+                <img src="static/qf logo.PNG" alt="Logo QUICKFIX">
+            </span>
+        </a>
+        <a class="btn btn-primary" href="index.html" style="padding: 10px 20px; font-size: 12px;">Ir al Inicio</a>
+    </header>
+
+    <div class="error-container">
+        <div class="error-card">
+            <div class="error-badge">
+                <i class="fa-solid fa-triangle-exclamation"></i> Error 404
+            </div>
+
+            <div class="error-icon-wrapper">
+                <i class="fa-solid fa-wrench"></i>
+            </div>
+
+            <h1 class="error-code">4<span>0</span>4</h1>
+            <h2 class="error-title">¡Uy! Se nos rompió esta tubería</h2>
+            <p class="error-desc">La página que estás buscando no existe, cambió de dirección o se fue por el desagüe. Pero tranquilo, te ayudamos a volver a la vía rápida.</p>
+
+            <div class="error-actions">
+                <a href="index.html" class="btn btn-primary">
+                    <i class="fa-solid fa-house"></i> Volver al Inicio
+                </a>
+                <a href="https://wa.link/z6fx0l" target="_blank" class="btn btn-outline">
+                    <i class="fa-brands fa-whatsapp" style="color:#25d366;"></i> Reportar falla
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <a href="https://wa.link/z6fx0l" class="whatsapp-float" target="_blank" aria-label="Hablar por WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <footer>
+        © 2026 QuickFix. Todos los derechos reservados. | Diseñado y Desarrollado por <a href="https://www.tedrix.co" target="_blank" rel="noopener">Tedrix</a>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Bloquear clic derecho
+            document.addEventListener('contextmenu', (e) => e.preventDefault());
+
+            // Evitar arrastrar imágenes
+            document.querySelectorAll('img').forEach(img => {
+            img.addEventListener('dragstart', (e) => e.preventDefault());
+            });
+
+            // Bloquear atajos de teclado F12, DevTools, Ctrl+U, Ctrl+S
+            document.addEventListener('keydown', (e) => {
+            if (e.key === 'F12') e.preventDefault();
+            if (e.ctrlKey && e.shiftKey && ['I', 'J', 'C', 'i', 'j', 'c'].includes(e.key)) e.preventDefault();
+            if (e.ctrlKey && (e.key === 'u' || e.key === 'U')) e.preventDefault();
+            if (e.ctrlKey && (e.key === 's' || e.key === 'S')) e.preventDefault();
+            });
+
+            // Trampa Anti-DevTools
+            setInterval(() => {
+            const startTime = performance.now();
+            debugger;
+            const endTime = performance.now();
+            if (endTime - startTime > 100) {
+                window.location.reload();
+            }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
